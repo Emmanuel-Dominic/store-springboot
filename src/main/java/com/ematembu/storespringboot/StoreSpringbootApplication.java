@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class StoreSpringbootApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(StoreSpringbootApplication.class, args);
+        // SpringApplication.run(StoreSpringbootApplication.class, args);
+        var orderService = new OderService(new StripePaymentService());
+        orderService.placeOder();
     }
 }
