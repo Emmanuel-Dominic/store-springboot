@@ -1,6 +1,7 @@
 package com.ematembu.storespringboot;
 
 // import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 // @Component
@@ -9,6 +10,9 @@ public class OderService {
 
     private PaymentService paymentService;
 
+    public OderService(PaymentService paymentService, String paymentType) {}
+
+    @Autowired
     public OderService(PaymentService paymentService) {
         this.paymentService = paymentService;
     }
