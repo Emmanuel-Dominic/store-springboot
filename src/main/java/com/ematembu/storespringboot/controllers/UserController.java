@@ -66,4 +66,18 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
     }
+
+    @RequestMapping(value="/users/{userId}", method = RequestMethod.DELETE)
+    public ResponseEntity<Map<String, String>> deleteUserById(@PathVariable int userId) {
+        Map<String, String> response = new HashMap<>();
+        User user = userService.findUserById(userId);
+        if(user != null){
+            userService.deleteUserById(userId);
+            response.put("message", "User deleted successfully!");
+            return ResponseEntity.status(HttpStatus.OK).body(response);
+        }else {
+            response.put("message", "User not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
+    }
 }
