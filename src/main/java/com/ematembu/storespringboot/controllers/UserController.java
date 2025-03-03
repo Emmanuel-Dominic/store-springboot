@@ -45,12 +45,12 @@ public class UserController {
 
     @RequestMapping(value = "/users", method= RequestMethod.POST)
     public ResponseEntity<?> registerUser(@RequestBody User user) {
-        try{
-            User newUser = userService.registerUser(user);
+        User newUser = userService.registerUser(user);
+        if(newUser != null){
             return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
-        }catch (Exception e){
+        }else{
             Map<String, String> response = new HashMap<>();
-            response.put("message", e.getMessage());
+            response.put("message", "User already exists!");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
     }

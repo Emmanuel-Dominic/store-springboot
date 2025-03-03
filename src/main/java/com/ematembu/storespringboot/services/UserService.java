@@ -26,8 +26,19 @@ public class UserService {
                 .findFirst().orElse(null);
     }
 
+    public User findUserByEmail(String email) {
+        return users.stream()
+                .filter(user -> user.getEmail().equals(email))
+                .findFirst().orElse(null);
+    }
+
     public User registerUser(User user) {
-        users.add(user);
-        return user;
+        if (findUserByEmail(user.getEmail()) == null) {
+            int id = users.size() + 1;
+            user.setId(id);
+            users.add(user);
+            return user;
+        }
+        return null;
     }
 }
