@@ -54,4 +54,16 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
     }
+
+    @RequestMapping(value = "/users/{userId}", method= RequestMethod.PUT)
+    public ResponseEntity<?> updateUserById(@PathVariable int userId, @RequestBody User user) {
+        User updatedUser = userService.updateUser(userId, user);
+        if(updatedUser != null){
+            return ResponseEntity.status(HttpStatus.OK).body(updatedUser);
+        }else{
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Failed to update user!");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+    }
 }

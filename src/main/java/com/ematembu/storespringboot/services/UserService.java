@@ -41,4 +41,14 @@ public class UserService {
         }
         return null;
     }
+
+    public User updateUser(int userId, User user) {
+         for(int i=0; i<users.size(); i++){
+             if(users.get(i).getId() == userId){
+                 users.set(i, user);
+                 return user;
+             }
+         }
+         return null;
+    }
 }
