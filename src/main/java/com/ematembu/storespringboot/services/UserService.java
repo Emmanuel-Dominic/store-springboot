@@ -35,7 +35,17 @@ public class UserService {
     public User updateUser(int userId, User user) {
         User existingUser = userRepository.findById(userId).orElse(null);
         if (existingUser != null) {
-            return userRepository.save(user);
+            if (!existingUser.getEmail().equals(user.getEmail())
+                    && userRepository.findByEmail(user.getEmail()).isPresent()) {
+                throw new RuntimeException("Email already in use");
+            }
+            existingUser.setName(user.getName());
+            existingUser.setEmail(user.getEmail());
+            existingUser.setAddress(user.getAddress());
+            existingUser.setAge(user.getAge());
+            existingUser.setPhone(user.getPhone());
+            existingUser.setPassword(user.getPassword());
+            return userRepository.save(existingUser);
         }
         return null;
     }
