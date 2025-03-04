@@ -1,9 +1,14 @@
 package com.ematembu.storespringboot.models;
 
+import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
 @Component
+@Entity
+@Table(name = "users_table")
 public class User {
+    @Id
+    // @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
     private int age;
