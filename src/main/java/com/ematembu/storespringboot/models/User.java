@@ -5,10 +5,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name = "users_table")
+@Table(name = "users")
 public class User {
     @Id
-    // @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private int age;
@@ -19,8 +19,7 @@ public class User {
 
     public User() {}
 
-    public User(int id, String name, int age, String email, String password, String phone, String address) {
-        this.id = id;
+    public User(String name, int age, String email, String password, String phone, String address) {
         this.name = name;
         this.age = age;
         this.email = email;
