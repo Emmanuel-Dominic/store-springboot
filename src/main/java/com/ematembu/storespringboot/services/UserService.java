@@ -1,7 +1,7 @@
 package com.ematembu.storespringboot.services;
 
 import com.ematembu.storespringboot.models.User;
-import com.ematembu.storespringboot.repositories.UserRepository;
+import com.ematembu.storespringboot.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

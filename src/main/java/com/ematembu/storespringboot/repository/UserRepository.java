@@ -1,4 +1,4 @@
-package com.ematembu.storespringboot.repositories;
+package com.ematembu.storespringboot.repository;
 
 import com.ematembu.storespringboot.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
