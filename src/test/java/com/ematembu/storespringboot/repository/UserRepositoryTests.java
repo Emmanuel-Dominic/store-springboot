@@ -16,7 +16,7 @@ public class UserRepositoryTests {
     UserRepository userRepository;
 
     @Test
-    public void UserRepositoryTest(){
+    public void RegisterUserRepositoryTest(){
         User user = new User("Emmanuel", 28, "ematembu2@gmail.com", "Password123", "0712345678", "kampala");
         User newUser = userRepository.save(user);
         Assertions.assertNotNull(newUser);
