@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 public class UserController {
 
     @Autowired
@@ -25,9 +26,7 @@ public class UserController {
             response.put("message", "No users found");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }else {
-            Map<String, List<User>> resp = new HashMap<>();
-            resp.put("users", users);
-            return ResponseEntity.status(HttpStatus.OK).body(resp);
+            return ResponseEntity.status(HttpStatus.OK).body(users);
         }
     }
 
