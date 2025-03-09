@@ -16,11 +16,11 @@ import java.util.Optional;
 public class UserRepositoryTests {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Test
     public void RegisterUserRepositoryTest(){
-        User user = new User("Emmanuel", 28, "ematembu2@gmail.com", "Password123", "0712345678", "kampala");
+        User user = new User("Emmanuel", "ematembu2@gmail.com", "0712345678");
         User newUser = userRepository.save(user);
         Assertions.assertNotNull(newUser);
         Assertions.assertNotEquals(0, newUser.getId());
@@ -28,8 +28,8 @@ public class UserRepositoryTests {
 
     @Test
     public void FindAllUserRepositoryTest(){
-        User user1 = new User("Emmanuel", 28, "ematembu@gmail.com", "Password123", "0712345678", "kampala");
-        User user2 = new User("Dominic", 28, "ematembu2@gmail.com", "Password123", "0712345678", "kampala");
+        User user1 = new User("Emmanuel", "ematembu@gmail.com", "0712345678");
+        User user2 = new User("Dominic", "ematembu2@gmail.com", "0712345678");
         userRepository.save(user1);
         userRepository.save(user2);
         List<User> users = userRepository.findAll();
@@ -40,8 +40,8 @@ public class UserRepositoryTests {
 
     @Test
     public void FindOneUserRepositoryTest(){
-        User user1 = new User("Emmanuel", 28, "ematembu@gmail.com", "Password123", "0712345678", "kampala");
-        User user2 = new User("Emmanuel", 28, "ematembu2@gmail.com", "Password123", "0712345678", "kampala");
+        User user1 = new User("Emmanuel", "ematembu@gmail.com", "0712345678");
+        User user2 = new User("Emmanuel", "ematembu2@gmail.com", "0712345678");
         userRepository.save(user1);
         Optional<User> findUser1 = userRepository.findById(user1.getId());
         Optional<User> findUser2 = userRepository.findById(user2.getId());
@@ -54,7 +54,7 @@ public class UserRepositoryTests {
 
     @Test
     public void UpdateUserRepositoryTest(){
-        User user = new User("Emmanuel", 28, "ematembu@gmail.com", "Password123", "0712345678", "kampala");
+        User user = new User("Emmanuel", "ematembu@gmail.com", "0712345678");
         userRepository.save(user);
         userRepository.findById(user.getId()).ifPresent(existingUser -> {
             existingUser.setName("Dominic");
@@ -68,7 +68,7 @@ public class UserRepositoryTests {
 
     @Test
     public void DeleteUserRepositoryTest(){
-        User user = new User("Emmanuel", 28, "ematembu@gmail.com", "Password123", "0712345678", "kampala");
+        User user = new User("Emmanuel", "ematembu@gmail.com", "0712345678");
         userRepository.save(user);
         userRepository.deleteById(user.getId());
 

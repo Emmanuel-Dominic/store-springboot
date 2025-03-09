@@ -21,10 +21,6 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
-    public User findUserByEmail(String email) {
-        return userRepository.findByEmail(email).orElse(null);
-    }
-
     public User registerUser(User user) {
         if (userRepository.findByEmail(user.getEmail()).orElse(null) == null) {
             return userRepository.save(user);
@@ -41,10 +37,7 @@ public class UserService {
             }
             existingUser.setName(user.getName());
             existingUser.setEmail(user.getEmail());
-            existingUser.setAddress(user.getAddress());
-            existingUser.setAge(user.getAge());
             existingUser.setPhone(user.getPhone());
-            existingUser.setPassword(user.getPassword());
             return userRepository.save(existingUser);
         }
         return null;
